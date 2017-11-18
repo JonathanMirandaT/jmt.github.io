@@ -1,0 +1,98 @@
+<canvas id="ctx" width="500" height="500" style="border:1px solid #000000;"></canvas>
+
+
+<script>
+
+var ctx = document.getElementById("ctx").getContext("2d");
+
+
+var message = 'Bouncing';
+var WIDTH = 500;
+var HEIGHT = 500;
+
+//player
+var player = {
+	x:50,
+	distX:30,
+	y:50,
+	distY:5,
+	name:'P'
+}
+
+
+//enemy
+var enemy = {
+	x:150,
+	distX:10,
+	y:350,
+	distY:15,
+	name:'E'
+}
+
+
+function updatePlayer(){
+
+
+//player
+player.x += player.distX;
+player.y += player.distY;
+ctx.fillText(player.name, player.x, player.y);
+
+if(player.x < 0 || player.x > WIDTH){
+
+	console.log('Out of bounds');
+	player.distX = -player.distX;
+	
+}
+
+if(player.y < 0 || player.y > HEIGHT){
+
+	console.log('Out of bounds');
+	player.distY = -player.distY;
+	
+}
+
+
+}
+function updateEnemy(){
+
+
+//enemy
+enemy.x += enemy.distX;
+enemy.y += enemy.distY;
+ctx.fillText(enemy.name, enemy.x, enemy.y);
+
+if(enemy.x < 0 || enemy.x > WIDTH){
+
+	console.log('Out of bounds');
+	enemy.distX = -enemy.distX;
+	
+}
+
+if(enemy.y < 0 || enemy.y > HEIGHT){
+
+	console.log('Out of bounds');
+	enemy.distY = -enemy.distY;
+	
+}
+
+
+}
+
+
+
+function update(){
+
+updatePlayer();
+updateEnemy();
+
+}
+
+
+setInterval(update, 40);
+
+
+
+
+
+</script>
